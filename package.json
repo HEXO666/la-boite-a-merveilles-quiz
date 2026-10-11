@@ -1,0 +1,12 @@
+{
+  "name": "la-boite-a-merveilles-platform",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix merveille run dev",
+    "build": "npm --prefix merveille run build",
+    "start": "npm --prefix merveille run start",
+    "lint": "npm --prefix merveille run lint",
+    "typecheck": "npm --prefix merveille run typecheck",
+    "test": "npm --prefix merveille run test:database"
+  }
+}
