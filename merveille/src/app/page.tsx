@@ -19,6 +19,8 @@ import {
   ShieldCheck,
   Info,
   Loader2,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { configured, supabase } from "@/lib/supabase";
 
@@ -79,6 +81,21 @@ const preview: Assignment[] = chapters.map((_, i) => ({
 }));
 
 export default function Home() {
+  const [darkTheme, setDarkTheme] = useState(false);
+  useEffect(() => {
+    let saved: string | null = null;
+    try { saved = localStorage.getItem("merveille-theme"); } catch {}
+    const dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    const initial = setTimeout(() => setDarkTheme(dark), 0);
+    return () => clearTimeout(initial);
+  }, []);
+  const toggleTheme = () => {
+    const dark = !darkTheme;
+    setDarkTheme(dark);
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    try { localStorage.setItem("merveille-theme", dark ? "dark" : "light"); } catch {}
+  };
   const [dateLabel, setDateLabel] = useState("");
   useEffect(() => {
     const updateDate = () =>
@@ -479,6 +496,15 @@ export default function Home() {
             </b>
           </div>
           <div className="account">
+            <button
+              className="icon-button theme-toggle"
+              onClick={toggleTheme}
+              aria-label={darkTheme ? "Activer le thème clair" : "Activer le thème sombre"}
+              aria-pressed={darkTheme}
+              title={darkTheme ? "Thème clair" : "Thème sombre"}
+            >
+              {darkTheme ? <Sun size={19} /> : <Moon size={19} />}
+            </button>
             {profile ? (
               <>
                 <span className="avatar">

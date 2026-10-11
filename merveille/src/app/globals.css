@@ -924,3 +924,39 @@ td {
     padding: 25px;
   }
 }
+
+/* Shared surfaces keep every portal, form and quiz readable in dark mode. */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 10px;
+}
+.theme-toggle:hover { background: #eeeafa; }
+:root { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; --ink: #eeeaf7; --purple: #9a83eb; }
+[data-theme="dark"] body { background: #12121c; }
+[data-theme="dark"] :is(.sidebar, .topbar, .stat, .chapter, .filters, .modal, .table-wrap, .empty, .setting-row, .quiz-panel, input) {
+  background: #1c1c2b;
+  border-color: #353449;
+}
+[data-theme="dark"] :is(.hero, .sidebar-note) { background: #262139; border-color: #403454; }
+[data-theme="dark"] :is(.hero h2, .sidebar-note strong, .breadcrumb b, .account strong) { color: #eeeaf7; }
+[data-theme="dark"] :is(.brand small, .nav-label, .nav button, .breadcrumb, .account small, .eyebrow, .welcome p, .date, .hero p, .hero-meta, .stat small, .stat p, .section-head p, .filters button, .chapter-label, .chapter p, .chapter-meta, .footnote, .modal p, .empty, .setting-row small, .setting-row label, .quiz-head p, .option, .result p, .sidebar-note) { color: #bcb5ce; }
+[data-theme="dark"] :is(.nav button.active, .filters button.selected, .theme-toggle:hover, .avatar, .chapter-number, .stat-icon, .timer, .badge.done, .notice) { background: #34294c; color: #d0bfff; }
+[data-theme="dark"] .pill { background: #392d50; color: #d0bfff; }
+[data-theme="dark"] :is(.badge, .stat:nth-child(2) .stat-icon) { background: #203c32; color: #9cdbb6; }
+[data-theme="dark"] .stat:nth-child(3) .stat-icon { background: #403222; color: #e8bd83; }
+[data-theme="dark"] :is(.badge.locked, .secondary) { background: #292938; color: #bcb5ce; border-color: #414054; }
+[data-theme="dark"] :is(th, td, .quiz-head) { border-color: #353449; }
+[data-theme="dark"] th { background: #252435; color: #c5bed5; }
+[data-theme="dark"] .option { border-color: #454058; }
+[data-theme="dark"] .option:has(input:checked) { background: #362a50; border-color: #aa8ee4; color: #ebddff; }
+[data-theme="dark"] .primary { color: #171220; }
+[data-theme="dark"] :is(.icon-button, .text-button, .result strong) { color: #c8b1ff; }
+[data-theme="dark"] .notice { border-color: #57446e; }
+[data-theme="dark"] .error { background: #45262c; color: #ffb8b1; border-color: #74404a; }
+[data-theme="dark"] .overlay { background: #080810b3; }
+[data-theme="dark"] .note-line { background: #443650; }
+
